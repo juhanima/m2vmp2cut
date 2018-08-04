@@ -816,8 +816,8 @@ FILE * open_indexfile(const char * filename)
     if (gops == 0)
 	die("No gops!!!");
 
-    if (gops > 100 * 1000)
-	die("currently 100 000 gop maximum (<%d)", gops);
+    if (gops > 10000 * 1000)
+	die("currently 10 000 000 gop maximum (<%d)", gops);
 
     if (width > 800)   die("Currently max width 800 (<%d)", width);
     if (height > 600)  die("Currently max width 600 (<%d)", height);
@@ -1953,7 +1953,6 @@ gboolean on_key_press(GtkWidget * w, GdkEventKey * k,
 		      gpointer user_data)
 {
     static int prevkey = 0;
-    static int pagestep = 256;
 
     (void)w; (void)user_data;
 
@@ -1983,9 +1982,13 @@ gboolean on_key_press(GtkWidget * w, GdkEventKey * k,
     {
     case GDK_Right: 
 	if (ctrl) {
-	    next_gop(3);
+	    for (i = 0; i < 250; i++)
+		next_frame();
+	    // next_gop(3);
 	} else if (shift) {
-	    next_gop(1);
+	    for (i = 0; i < 25; i++)
+		next_frame();
+	    // next_gop(1);
 	} else if (alt) {
 	    next_frame();
 	} else {
@@ -1996,9 +1999,13 @@ gboolean on_key_press(GtkWidget * w, GdkEventKey * k,
 
     case GDK_Left:
 	if (ctrl) {
-	    previous_gop(3);
+	    for (i = 0; i < 250; i++)
+		previous_frame();
+	    // previous_gop(3);
 	} else if (shift) {
-	    previous_gop(1);
+	    for (i = 0; i < 25; i++)
+		previous_frame();
+	    // previous_gop(1);
 	} else if (alt) {
 	    previous_frame();
 	} else {
