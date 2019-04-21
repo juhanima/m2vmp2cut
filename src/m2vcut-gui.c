@@ -858,7 +858,7 @@ void read_indexfile(FILE * fh)
 	    fig = frame - pframe;
 	    if (fig > maxfig) {
 		enum { FIGMAX = 32 };
-		if (fig >= FIGMAX)
+		if (fig > FIGMAX)
 		    die("Gop %d in index file '%s' has too many frames "
 			"(%d > %d)", i, G.indexfile, fig, FIGMAX);
 		maxfig = fig;
