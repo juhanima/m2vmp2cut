@@ -78,7 +78,7 @@ LF_OPTS= -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
 
 CFLAGS +=	-std=c99 $(OPTFLAGS) $(LF_OPTS) $(WOPTS) $(INCLS)
 
-OPTFLAGS=-s -O3
+OPTFLAGS=-g -O0
 
 #$(BD)/m2vmp2cut.bin: $(OBJS)
 #	$(CC) -o $@ $(OBJS)

@@ -77,7 +77,7 @@ typedef char bool8;
 
 typedef unsigned int u_int; // c99 blocks this definition in <sys/types.h>
 
-#if 0
+#if 1
 #define DEBUG 1
 #define d1(x) do { printf("%d ", __LINE__); printf x; printf("\n"); } while (0)
 //#define d1(x) do {} while (0)
@@ -661,7 +661,11 @@ static void decode_frames(int frameno, int untilframe)
 	switch (state)
 	{
 	case STATE_BUFFER:
+            d1(("read %zd bytes", sizeof M.buffer));
 	    size = read (M.fd, M.buffer, sizeof M.buffer);
+            if (size < sizeof M.buffer) {
+                d1(("incomplete read(%zd < %zd)", size, sizeof M.buffer));
+            }
 	    if (size > 0)
 		prevsize = size;
 	    else if (prevsize > 0) {
