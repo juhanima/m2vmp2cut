@@ -77,7 +77,7 @@ typedef char bool8;
 
 typedef unsigned int u_int; // c99 blocks this definition in <sys/types.h>
 
-#if 1
+#if 0
 #define DEBUG 1
 #define d1(x) do { printf("%d ", __LINE__); printf x; printf("\n"); } while (0)
 //#define d1(x) do {} while (0)
@@ -861,7 +861,7 @@ void read_indexfile(FILE * fh)
 		    G.indexfile, i, gop);
 	    fig = frame - pframe;
 	    if (fig > maxfig) {
-		enum { FIGMAX = 32 };
+		enum { FIGMAX = 64 };
 		if (fig > FIGMAX)
 		    die("Gop %d in index file '%s' has too many frames "
 			"(%d > %d)", i, G.indexfile, fig, FIGMAX);
